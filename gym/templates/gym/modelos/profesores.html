@@ -1,0 +1,55 @@
+{% extends "gym/index.html" %}
+		{% load static %}
+{% block contenidoQueCambia %}
+  <section id="Home">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div class="container-text p-5 text-xl-center">
+        <h1 class="text-uppercase fw-bold text-center">
+          Informacion de Profesores
+        </h1>
+      </div>
+      <table class="table w-75">
+        <thead class="bg-primary">
+          <tr >
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Correo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profesores in profesores %}
+          <tr>
+            <td>{{profesores.nombre}}</td>
+            <td>{{profesores.apellido}}</td>
+            <td>{{profesores.documento}}</td>
+            <td>{{profesores.correo}}</td>
+            <td>
+              <ul class="navbar-nav d-flex flex-row align-items-center gap-2 ps-lg-4">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'editarProfesor' profesores.nombre%}">
+                    <i class="fa-solid fa-pencil" style="color: green;" title="Editar"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link" href="{% url 'eliminarProfe' profesores.nombre %}">
+                    <i class="fa-solid fa-trash" style="color: red;" title="Eliminar"></i>
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-start w-75">
+        <a class="btn btn-primary rounded-5 w-25" href="{%url 'formProfesores' %}">
+            <i class="fa-solid fa-plus"></i>
+            <span class="fw-bold">Agregar Profesor</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

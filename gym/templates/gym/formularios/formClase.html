@@ -1,0 +1,46 @@
+{% extends "gym/indexform.html" %}
+		{% load static %}
+{% block contenidoQueCambia %}
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="btn text-light" href="{% url 'Clase' %}">Volver</a>
+        </div>
+    </nav>
+    <section class=" d-flex flex-column align-items-center w-100">
+        <div class="m-4">
+            <h1 class="text-light text-uppercase fw-bold">Agregar Clase</h1>
+        </div>
+        <form action="" method="POST" class="w-50 mt-3">
+            {% csrf_token %}
+            <div class="d-flex flex-column gap-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" name="nombre" maxlength="40" required id="id_nombre" class="form-control">
+                        <label for="id_nombre">Nombre</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" name="profesor" maxlength="40" required id="id_profesor" class="form-control">
+                        <label for="id_profesor">Profesor</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" name="dias" maxlength="40" required id="id_dias" class="form-control">
+                        <label for="id_dias">Dias</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" name="horario" maxlength="40" required id="id_horario" class="form-control">
+                        <label for="id_horario">Horario</label>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Enviar" class="btn btn-primary btn-lg mt-3">
+        </form>
+    </section>
+
+{% endblock %}

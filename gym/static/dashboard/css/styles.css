@@ -1,0 +1,32 @@
+:root {
+    --textColor: #e6dedd;
+    --backgroundBody: #2d4059;
+    --backgroundNav: #0e2f56;
+}
+
+* {
+    color: var(--textColor);
+}
+
+section {
+    height: 91vh;
+    background-color: var(--backgroundBody);
+}
+
+.navbar, .offcanvas-header, .offcanvas-body {
+    background-color: var(--backgroundNav);
+}
+
+.navbar-toggler {
+    border: none !important;
+    text-decoration: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler span {
+    color: #e6dedd !important;
+}
+

@@ -1,0 +1,55 @@
+{% extends "gym/index.html" %}
+		{% load static %}
+{% block contenidoQueCambia %}
+    <section id="Home">
+        <div class="container d-flex flex-column align-items-center justify-content-center">
+            <div class="container-text p-5 text-xl-center">
+                <h1 class="text-uppercase fw-bold text-center">
+                Informacion Clases
+                </h1>
+            </div>
+            <table class="table w-75">
+                <thead class="bg-primary"> 
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Profesor</th>
+                        <th scope="col">Dias</th>
+                        <th scope="col">Horario</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for clases in clases %}
+                    <tr>
+                        <td>{{clases.nombre}}</td>
+                        <td>{{clases.profesor}}</td>
+                        <td>{{clases.dias}}</td>
+                        <td>{{clases.horario}}</td>
+                        <td>
+                            <ul class="navbar-nav d-flex flex-row align-items-center gap-2 ps-lg-4">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'editarClase' clases.profesor%}">
+                                        <i class="fa-solid fa-pencil" style="color: green;" title="Editar"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{% url 'eliminarClase' clases.profesor %}">
+                                        <i class="fa-solid fa-trash" style="color: red;" title="Eliminar"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-start w-75">
+                <a class="btn btn-primary rounded-5 w-25" href="{%url 'formClase' %}">
+                    <i class="fa-solid fa-plus"></i>
+                    <span class="fw-bold">Agregar Clase</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

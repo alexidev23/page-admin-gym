@@ -1,0 +1,59 @@
+{% extends "gym/index.html" %}
+	{% load static %}
+{% block contenidoQueCambia %}
+    <section id="Home">
+        <div class="container d-flex flex-column align-items-center justify-content-center">
+            <div class="container-text p-5 text-xl-center">
+                <h1 class="text-uppercase fw-bold text-center">
+                Informacion de Alumnos
+                </h1>
+            </div>
+            <table class="table w-75">
+                <thead class="bg-primary"> 
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Pase</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Fecha</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for estudiantes in estudiantes %}
+                    <tr>
+                        <td>{{estudiantes.nombre}}</td>
+                        <td>{{estudiantes.apellido}}</td>
+                        <td>{{estudiantes.documento}}</td>
+                        <td>{{estudiantes.pase}}</td>
+                        <td>{{estudiantes.correo}}</td>
+                        <td>{{estudiantes.fecha}}</td>
+                        <td>
+                            <ul class="navbar-nav d-flex flex-row gap-2">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'editarEstudiante' estudiantes.correo%}">
+                                        <i class="fa-solid fa-pencil" style="color: green;" title="Editar"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{% url 'eliminarEstu' estudiantes.apellido %}">
+                                        <i class="fa-solid fa-trash" style="color: red;" title="Eliminar"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-start w-75">
+                <a class="btn btn-primary rounded-5 w-25" href="{%url 'formEstudiantes' %}">
+                    <i class="fa-solid fa-plus"></i>
+                    <span class="fw-bold">Agregar Alumno</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
